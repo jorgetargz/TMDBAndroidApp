@@ -10,7 +10,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.jorgetargz.movies.domain.use_cases.ListTrendingMoviesUseCase
+import org.jorgetargz.movies.domain.use_cases.movies.LoadCachedTrendingMoviesUseCase
+import org.jorgetargz.movies.domain.use_cases.movies.LoadTrendingMoviesUseCase
 import org.jorgetargz.movies.framework.utils.Utils
 import org.jorgetargz.movies.utils.NetworkResult
 import timber.log.Timber
@@ -19,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ListTrendingMoviesViewModel @Inject constructor(
     @ApplicationContext private val appContext: Context,
-    private val loadTrendingMoviesUseCase: ListTrendingMoviesUseCase,
+    private val loadTrendingMoviesUseCase: LoadTrendingMoviesUseCase,
+    private val loadCachedTrendingMoviesUseCase: LoadCachedTrendingMoviesUseCase,
 ) : ViewModel() {
 
     private val _uiState: MutableStateFlow<ListTrendingMoviesContract.ListTrendingMoviesState> by lazy {
@@ -62,12 +64,38 @@ class ListTrendingMoviesViewModel @Inject constructor(
                         }
                     }
             } else {
-                _uiState.update {
-                    it.copy(
-                        error = "no hay internet cargando de cache.",
-                        isLoading = false
-                    )
-                }
+                loadCachedTrendingMoviesUseCase.invoke()
+                    .catch(action = { cause ->
+                        _uiState.update {
+                            it.copy(
+                                error = cause.message,
+                                isLoading = false
+                            )
+                        }
+                    })
+                    .collect { result ->
+                        when (result) {
+                            is NetworkResult.Error -> {
+                                _uiState.update {
+                                    it.copy(
+                                        error = result.message,
+                                        isLoading = false
+                                    )
+                                }
+                            }
+                            is NetworkResult.Loading -> _uiState.update {
+                                it.copy(isLoading = true)
+                            }
+                            is NetworkResult.Success -> _uiState.update {
+                                it.copy(
+                                    error = "Loaded from cache",
+                                    movies = result.data ?: emptyList(),
+                                    moviesFiltered = result.data ?: emptyList(),
+                                    isLoading = false
+                                )
+                            }
+                        }
+                    }
             }
         }
     }
@@ -91,7 +119,9 @@ class ListTrendingMoviesViewModel @Inject constructor(
     fun handleEvent(event: ListTrendingMoviesContract.ListTrendingMoviesEvent) {
         when (event) {
             is ListTrendingMoviesContract.ListTrendingMoviesEvent.LoadTrendingMoviesMovies -> loadTrendingMovies()
-            is ListTrendingMoviesContract.ListTrendingMoviesEvent.FilterTrendingMoviesMovies -> filterMovies(event.nombre)
+            is ListTrendingMoviesContract.ListTrendingMoviesEvent.FilterTrendingMoviesMovies -> filterMovies(
+                event.nombre
+            )
         }
     }
 }

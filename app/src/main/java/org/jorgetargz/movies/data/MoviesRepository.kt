@@ -23,7 +23,7 @@ class MoviesRepository @Inject constructor(
 
     fun fetchTrendingMovies(): Flow<NetworkResult<List<Movie>>> {
         return flow {
-            emit(fetchTrendingMoviesCached())
+            emit(trendingMoviesCached())
             emit(NetworkResult.Loading())
             val result = moviesRemoteDataSource.fetchTrendingMovies()
                 .map { response -> response?.results?.map { it.toMovie() } ?: emptyList() }
@@ -39,7 +39,12 @@ class MoviesRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    private fun fetchTrendingMoviesCached(): NetworkResult<List<Movie>> =
+    fun fetchTrendingMoviesCached(): Flow<NetworkResult<List<Movie>>> =
+        flow {
+            emit(trendingMoviesCached())
+        }.flowOn(Dispatchers.IO)
+
+    private fun trendingMoviesCached(): NetworkResult<List<Movie>> =
         moviesDao.getAll().let { list ->
             NetworkResult.Success(list.map { it.toMovie() })
         }

@@ -7,9 +7,9 @@
         android:title="@string/title_trend_movies" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_movie"
-        android:title="@string/title_trend_movies" />
+        android:id="@+id/navigation_trending_tv_shows"
+        android:icon="@drawable/ic_live_tv"
+        android:title="@string/title_trend_tv_shows" />
 
     <item
         android:id="@+id/navigation_notifications"

@@ -57,10 +57,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+        binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_trending_movies -> {
-                    Toast.makeText(this, "Trending Movies", Toast.LENGTH_SHORT).show()
+                    navController.navigate(R.id.trending_movies_fragment)
                     true
                 }
                 else -> super.onOptionsItemSelected(it)
