@@ -41,6 +41,6 @@ fun ImageView.loadUrl(url: String) {
         crossfade(true)
         transformations(RoundedCornersTransformation(20f))
         placeholder(R.drawable.arrows_rotate_solid)
-        error(R.drawable.ic_movie)
+        error(R.drawable.ic_cloud_off)
     }
 }
