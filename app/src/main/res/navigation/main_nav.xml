@@ -8,6 +8,12 @@
     <fragment
         android:id="@+id/trending_movies_fragment"
         android:name="org.jorgetargz.movies.framework.list_trending_movies.ListTrendingMoviesFragment"
-        android:label="fragment_trending"
+        android:label="@string/title_trend_movies"
         tools:layout="@layout/fragment_trending_movies" />
+
+    <fragment
+        android:id="@+id/trending_tv_shows_fragment"
+        android:name="org.jorgetargz.movies.framework.list_trending_tv_shows.ListTrendingTVShowsFragment"
+        android:label="@string/title_trend_tv_shows"
+        tools:layout="@layout/fragment_trending_tv_shows" />
 </navigation>

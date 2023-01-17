@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".framework.list_trending_movies.ListTrendingMoviesFragment">
+    tools:context=".framework.list_trending_tv_shows.ListTrendingTVShowsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTVShows"

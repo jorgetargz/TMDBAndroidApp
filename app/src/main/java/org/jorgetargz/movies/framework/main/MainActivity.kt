@@ -63,6 +63,10 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.trending_movies_fragment)
                     true
                 }
+                R.id.navigation_trending_tv_shows -> {
+                    navController.navigate(R.id.trending_tv_shows_fragment)
+                    true
+                }
                 else -> super.onOptionsItemSelected(it)
             }
         }
