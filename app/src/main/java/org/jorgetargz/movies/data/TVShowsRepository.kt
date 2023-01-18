@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import org.jorgetargz.movies.data.local.TVShowsDao
-import org.jorgetargz.movies.data.models.entitys.toTVShow
-import org.jorgetargz.movies.data.models.entitys.toTVShowEntity
+import org.jorgetargz.movies.data.models.entitys.toDataEntity
+import org.jorgetargz.movies.data.models.entitys.toDomain
 import org.jorgetargz.movies.data.remote.TVShowsRemoteDataSource
 import org.jorgetargz.movies.domain.models.TVShow
 import org.jorgetargz.movies.utils.NetworkResult
@@ -26,13 +26,13 @@ class TVShowsRepository @Inject constructor(
             emit(trendingTVShowsCached())
             emit(NetworkResult.Loading())
             val result = tvShowsRemoteDataSource.fetchTrendingTVShows()
-                .map { response -> response?.results?.map { it.toTVShow() } ?: emptyList() }
+                .map { response -> response?.results?.map { it.toDomain() } ?: emptyList() }
 
             //Cache to database if response is successful
             if (result is NetworkResult.Success) {
                 result.data?.let { it ->
                     tvShowsDao.deleteAll()
-                    tvShowsDao.insertAll(it.map { it.toTVShowEntity() })
+                    tvShowsDao.insertAll(it.map { it.toDataEntity() })
                 }
             }
             emit(result)
@@ -46,13 +46,13 @@ class TVShowsRepository @Inject constructor(
 
     private fun trendingTVShowsCached(): NetworkResult<List<TVShow>> =
         tvShowsDao.getAll().let { list ->
-            NetworkResult.Success(list.map { it.toTVShow() })
+            NetworkResult.Success(list.map { it.toDomain() })
         }
 
     fun fetchTVShow(id: Int): Flow<NetworkResult<TVShow>> {
         return flow {
             emit(NetworkResult.Loading())
-            emit(tvShowsRemoteDataSource.fetchTVShow(id).map { it?.toTVShow() ?: TVShow() })
+            emit(tvShowsRemoteDataSource.fetchTVShow(id).map { it?.toDomain() ?: TVShow() })
         }.flowOn(Dispatchers.IO)
     }
 }
