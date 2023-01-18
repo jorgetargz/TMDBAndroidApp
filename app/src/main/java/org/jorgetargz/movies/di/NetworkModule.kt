@@ -4,11 +4,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import org.jorgetargz.movies.network.AuthInterceptor
-import org.jorgetargz.movies.network.services.MovieService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.jorgetargz.movies.network.AuthInterceptor
 import org.jorgetargz.movies.network.Config
+import org.jorgetargz.movies.network.services.MoviesService
+import org.jorgetargz.movies.network.services.PersonsService
 import org.jorgetargz.movies.network.services.TVShowsService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -46,12 +47,17 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideMovieService(retrofit: Retrofit): MovieService {
-        return retrofit.create(MovieService::class.java)
+    fun provideMovieService(retrofit: Retrofit): MoviesService {
+        return retrofit.create(MoviesService::class.java)
     }
 
     @Provides
     fun provideTVShowsService(retrofit: Retrofit): TVShowsService {
         return retrofit.create(TVShowsService::class.java)
+    }
+
+    @Provides
+    fun providePersonsService(retrofit: Retrofit): PersonsService {
+        return retrofit.create(PersonsService::class.java)
     }
 }

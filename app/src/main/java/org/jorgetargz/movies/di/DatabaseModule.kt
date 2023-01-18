@@ -5,11 +5,11 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import org.jorgetargz.movies.data.local.AppDatabase
 import org.jorgetargz.movies.data.local.MoviesDao
-import dagger.hilt.components.SingletonComponent
+import org.jorgetargz.movies.data.local.PersonsDao
 import org.jorgetargz.movies.data.local.TVShowsDao
 import javax.inject.Singleton
 
@@ -36,5 +36,10 @@ object DatabaseModule {
     @Provides
     fun provideTVShowsDao(appDatabase: AppDatabase): TVShowsDao {
         return appDatabase.tvShowsDao()
+    }
+
+    @Provides
+    fun providePersonsDao(appDatabase: AppDatabase): PersonsDao {
+        return appDatabase.personsDao()
     }
 }
