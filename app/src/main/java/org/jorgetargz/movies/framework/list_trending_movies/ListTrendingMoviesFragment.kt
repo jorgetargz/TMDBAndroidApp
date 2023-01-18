@@ -3,7 +3,6 @@ package org.jorgetargz.movies.framework.list_trending_movies
 import android.os.Bundle
 import android.view.*
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -12,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.jorgetargz.movies.R
@@ -50,7 +50,7 @@ class ListTrendingMoviesFragment : Fragment(), MenuProvider {
                         adapter.submitList(movieList)
                     }
                     value.error?.let {
-                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
                     }
                     value.isLoading.let {
                         ((activity as MainActivity).findViewById(R.id.loadingAnimation) as ProgressBar)
@@ -89,7 +89,9 @@ class ListTrendingMoviesFragment : Fragment(), MenuProvider {
             override fun onQueryTextChange(newText: String?): Boolean {
                 newText?.let {
                     viewModel.handleEvent(
-                        ListTrendingMoviesContract.ListTrendingMoviesEvent.FilterTrendingMoviesMovies(newText)
+                        ListTrendingMoviesContract.ListTrendingMoviesEvent.FilterTrendingMoviesMovies(
+                            newText
+                        )
                     )
                 }
                 return false
