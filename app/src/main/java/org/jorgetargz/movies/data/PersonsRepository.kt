@@ -28,7 +28,11 @@ class PersonsRepository @Inject constructor(
             emit(trendingPersonsCached())
             emit(NetworkResult.Loading())
             val result = personsRemoteDataSource.fetchTrendingPersons()
-                .map { response -> response?.results?.map { it.toDomain() } ?: emptyList() }
+                .map { response -> response?.results
+                    ?.map { it.toDomain() }
+                    ?.sortedWith(compareByDescending { it.popularity })
+                    ?: emptyList()
+                }
 
             //Cache to database if response is successful
             if (result is NetworkResult.Success) {

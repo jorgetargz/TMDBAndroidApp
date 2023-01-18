@@ -26,7 +26,11 @@ class MoviesRepository @Inject constructor(
             emit(trendingMoviesCached())
             emit(NetworkResult.Loading())
             val result = moviesRemoteDataSource.fetchTrendingMovies()
-                .map { response -> response?.results?.map { it.toDomain() } ?: emptyList() }
+                .map { response -> response?.results
+                    ?.sortedWith(compareByDescending { it.popularity })
+                    ?.map { it.toDomain() }
+                    ?: emptyList()
+                }
 
             //Cache to database if response is successful
             if (result is NetworkResult.Success) {
