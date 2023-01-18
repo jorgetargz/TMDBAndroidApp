@@ -43,11 +43,11 @@ fun Person.toDataRelation() : PersonWithKnownFor {
             person_id = id,
             title = it.title,
             name = it.name,
-            poster_path = it.poster_path,
-            vote_average = it.vote_average,
-            vote_count = it.vote_count,
-            release_date = it.release_date,
-            first_air_date = it.first_air_date,
+            poster_path = it.posterPath,
+            vote_average = it.voteAverage,
+            vote_count = it.voteCount,
+            release_date = it.releaseDate?.toString(),
+            first_air_date = it.firstAirDate?.toString(),
             overview = it.overview,
         ) }
     )

@@ -57,7 +57,7 @@ class PersonsAdapter(
             }
 
             item.knownFor.forEach {
-                it.poster_path?.let { it1 ->
+                it.posterPath?.let { it1 ->
                     run {
                         val imageView = ImageView(context)
                         imageView.loadUrlFromTMDBW342Size(it1)

@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "org.jorgetargz.movies"
-        minSdk 23
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -72,7 +72,7 @@ dependencies {
     // Retrofit and Gson
     def retrofitVersion = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 
     // OkHttp3 logging interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"

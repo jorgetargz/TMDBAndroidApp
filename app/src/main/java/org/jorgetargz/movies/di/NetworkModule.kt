@@ -12,7 +12,7 @@ import org.jorgetargz.movies.network.services.MoviesService
 import org.jorgetargz.movies.network.services.PersonsService
 import org.jorgetargz.movies.network.services.TVShowsService
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -41,7 +41,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
             .client(okHttpClient)
             .build()
     }

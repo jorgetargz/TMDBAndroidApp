@@ -1,13 +1,15 @@
 package org.jorgetargz.movies.domain.models
 
+import java.time.LocalDate
+
 data class KnownFor(
     val id: Int = 0,
     val title: String? = null,
     val name: String? = null,
-    val poster_path: String? = null,
-    val vote_average: Double = 0.0,
-    val vote_count: Int = 0,
-    val release_date: String? = null,
-    val first_air_date: String? = null,
+    val posterPath: String? = null,
+    val voteAverage: Double = 0.0,
+    val voteCount: Int = 0,
+    val releaseDate: LocalDate?,
+    val firstAirDate: LocalDate?,
     val overview: String = "",
 )

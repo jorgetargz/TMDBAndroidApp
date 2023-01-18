@@ -9,4 +9,8 @@
     <string name="poster">Poster</string>
     <string name="title_trend_persons">Trending Persons</string>
     <string name="known_for">Known for</string>
+    <string name="key_title">Title:</string>
+    <string name="value_title">Title</string>
+    <string name="key_overview">Overview:</string>
+    <string name="value_overview">Overview</string>
 </resources>

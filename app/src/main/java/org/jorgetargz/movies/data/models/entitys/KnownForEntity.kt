@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import org.jorgetargz.movies.domain.models.KnownFor
+import java.time.LocalDate
 
 @Entity(tableName = "known_for", foreignKeys = [
     ForeignKey(
@@ -22,8 +23,8 @@ data class KnownForEntity(
     val poster_path: String? = null,
     val vote_average: Double = 0.0,
     val vote_count: Int = 0,
-    val release_date: String? = null,
-    val first_air_date: String? = null,
+    val release_date: String?,
+    val first_air_date: String?,
     val overview: String = "",
 )
 
@@ -32,11 +33,11 @@ fun KnownForEntity.toDomain(): KnownFor {
         id = id,
         title = title,
         name = name,
-        poster_path = poster_path,
-        vote_average = vote_average,
-        vote_count = vote_count,
-        release_date = release_date,
-        first_air_date = first_air_date,
+        posterPath = poster_path,
+        voteAverage = vote_average,
+        voteCount = vote_count,
+        releaseDate = release_date?.let { LocalDate.parse(it) },
+        firstAirDate = first_air_date?.let { LocalDate.parse(it) },
         overview = overview,
     )
 }
