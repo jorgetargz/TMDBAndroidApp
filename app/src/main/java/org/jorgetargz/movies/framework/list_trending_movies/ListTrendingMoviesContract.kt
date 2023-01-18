@@ -5,8 +5,8 @@ import org.jorgetargz.movies.domain.models.Movie
 interface ListTrendingMoviesContract {
 
     sealed class ListTrendingMoviesEvent {
-        class FilterTrendingMoviesMovies(val nombre: String) : ListTrendingMoviesEvent()
-        object LoadTrendingMoviesMovies: ListTrendingMoviesEvent()
+        class FilterTrendingMovies(val nombre: String) : ListTrendingMoviesEvent()
+        object LoadTrendingMovies: ListTrendingMoviesEvent()
     }
 
     data class ListTrendingMoviesState(

@@ -41,7 +41,7 @@ class ListTrendingMoviesFragment : Fragment(), MenuProvider {
         setupAdapter()
         addMenuProvider()
 
-        viewModel.handleEvent(ListTrendingMoviesContract.ListTrendingMoviesEvent.LoadTrendingMoviesMovies)
+        viewModel.handleEvent(ListTrendingMoviesContract.ListTrendingMoviesEvent.LoadTrendingMovies)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -89,7 +89,7 @@ class ListTrendingMoviesFragment : Fragment(), MenuProvider {
             override fun onQueryTextChange(newText: String?): Boolean {
                 newText?.let {
                     viewModel.handleEvent(
-                        ListTrendingMoviesContract.ListTrendingMoviesEvent.FilterTrendingMoviesMovies(
+                        ListTrendingMoviesContract.ListTrendingMoviesEvent.FilterTrendingMovies(
                             newText
                         )
                     )
