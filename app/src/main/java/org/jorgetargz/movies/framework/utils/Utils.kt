@@ -12,6 +12,7 @@ import coil.size.Scale
 import coil.transform.RoundedCornersTransformation
 import org.jorgetargz.movies.R
 import org.jorgetargz.movies.network.Config
+import org.jorgetargz.movies.network.common.Constantes
 
 object Utils {
 
@@ -34,8 +35,19 @@ fun ViewGroup.inflate(layoutRes: Int): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
-fun ImageView.loadUrl(url: String) {
-    val completeUrl = Config.IMAGE_URL + url
+fun ImageView.loadUrlFromTMDB(url: String) {
+    val completeUrl = Config.IMAGE_URL + Constantes.ORIGINAL_SIZE + url
+    this.load(completeUrl) {
+        scale(Scale.FIT)
+        crossfade(true)
+        transformations(RoundedCornersTransformation(20f))
+        placeholder(R.drawable.arrows_rotate_solid)
+        error(R.drawable.ic_cloud_off)
+    }
+}
+
+fun ImageView.loadUrlFromTMDBW500Size(url: String) {
+    val completeUrl = Config.IMAGE_URL + Constantes.W500_SIZE + url
     this.load(completeUrl) {
         scale(Scale.FIT)
         crossfade(true)
