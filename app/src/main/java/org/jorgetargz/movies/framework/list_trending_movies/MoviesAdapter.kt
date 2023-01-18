@@ -9,7 +9,7 @@ import org.jorgetargz.movies.R
 import org.jorgetargz.movies.databinding.ItemMediaBinding
 import org.jorgetargz.movies.domain.models.Movie
 import org.jorgetargz.movies.framework.utils.inflate
-import org.jorgetargz.movies.framework.utils.loadUrl
+import org.jorgetargz.movies.framework.utils.loadUrlFromTMDB
 
 class MoviesAdapter(private val listTrendingMoviesActions: ListTrendingMoviesActions) :
     ListAdapter<Movie, MoviesAdapter.ItemViewholder>(
@@ -37,7 +37,7 @@ class MoviesAdapter(private val listTrendingMoviesActions: ListTrendingMoviesAct
 
         fun bind(item: Movie) = with(binding) {
             tvTitle.text = item.title
-            item.posterPath?.let { ivMedia.loadUrl(it) }
+            item.posterPath?.let { ivMedia.loadUrlFromTMDB(it) }
                 ?: ivMedia.setImageResource(R.drawable.ic_movie)
 
             card.setOnClickListener {

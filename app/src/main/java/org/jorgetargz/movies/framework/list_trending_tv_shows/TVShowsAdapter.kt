@@ -9,7 +9,7 @@ import org.jorgetargz.movies.R
 import org.jorgetargz.movies.databinding.ItemMediaBinding
 import org.jorgetargz.movies.domain.models.TVShow
 import org.jorgetargz.movies.framework.utils.inflate
-import org.jorgetargz.movies.framework.utils.loadUrl
+import org.jorgetargz.movies.framework.utils.loadUrlFromTMDB
 
 class TVShowsAdapter(private val listTrendingTVShowsActions: ListTrendingTVShowsActions) :
     ListAdapter<TVShow, TVShowsAdapter.ItemViewholder>(
@@ -37,7 +37,7 @@ class TVShowsAdapter(private val listTrendingTVShowsActions: ListTrendingTVShows
 
         fun bind(item: TVShow) = with(binding) {
             tvTitle.text = item.name
-            item.posterPath?.let { ivMedia.loadUrl(it) } ?: ivMedia.setImageResource(R.drawable.ic_movie)
+            item.posterPath?.let { ivMedia.loadUrlFromTMDB(it) } ?: ivMedia.setImageResource(R.drawable.ic_movie)
 
             card.setOnClickListener {
                 listTrendingTVShowsActions.onTVShowClicked(item.id)
