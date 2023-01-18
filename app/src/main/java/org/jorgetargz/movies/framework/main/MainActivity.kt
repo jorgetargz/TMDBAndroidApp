@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -14,6 +13,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.jorgetargz.movies.R
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
     private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { value ->
                     value.error?.let {
-                        Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
                         viewModel.handleEvent(MainContract.Event.MensajeMostrado)
                     }
                 }
@@ -53,7 +56,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAppBar() {
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.trending_movies_fragment, R.id.trending_persons_fragment, R.id.trending_tv_shows_fragment),
+        )
         setSupportActionBar(binding.topAppBar)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     private fun setupBottomNavigation() {
@@ -65,6 +72,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_trending_tv_shows -> {
                     navController.navigate(R.id.trending_tv_shows_fragment)
+                    true
+                }
+                R.id.navigation_trending_persons -> {
+                    navController.navigate(R.id.trending_persons_fragment)
                     true
                 }
                 else -> super.onOptionsItemSelected(it)
@@ -94,7 +105,6 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_login -> {
                 //TODO: Implement login
-                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(menuItem)
