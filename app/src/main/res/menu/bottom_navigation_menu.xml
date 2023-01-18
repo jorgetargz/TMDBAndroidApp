@@ -12,7 +12,8 @@
         android:title="@string/title_trend_tv_shows" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_movie"
-        android:title="@string/title_trend_movies" />
+        android:id="@+id/navigation_trending_persons"
+        android:icon="@drawable/ic_star_solid"
+        android:title="@string/title_trend_persons" />
+
 </menu>

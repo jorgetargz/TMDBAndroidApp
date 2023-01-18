@@ -16,4 +16,10 @@
         android:name="org.jorgetargz.movies.framework.list_trending_tv_shows.ListTrendingTVShowsFragment"
         android:label="@string/title_trend_tv_shows"
         tools:layout="@layout/fragment_trending_tv_shows" />
+
+    <fragment
+        android:id="@+id/trending_persons_fragment"
+        android:name="org.jorgetargz.movies.framework.list_trending_persons.ListTrendingPersonsFragment"
+        android:label="@string/title_trend_persons"
+        tools:layout="@layout/fragment_trending_persons" />
 </navigation>

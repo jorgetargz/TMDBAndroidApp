@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/search"
-        android:title="@string/buscar"
-        android:contentDescription="@string/buscar"
+        android:title="@string/search"
+        android:contentDescription="@string/search"
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
