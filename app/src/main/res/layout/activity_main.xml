@@ -50,9 +50,10 @@
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
+                style="@style/Widget.MaterialComponents.BottomNavigationView.Personalized"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                app:backgroundTint="@color/purple_500"
+                app:backgroundTint="@color/blue_dark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

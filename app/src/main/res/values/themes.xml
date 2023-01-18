@@ -2,30 +2,25 @@
     <!-- Base application theme. -->
     <style name="Theme.Movies" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/blue_dark</item>
+        <item name="colorPrimaryVariant">@color/blue_light</item>
+        <item name="colorOnPrimary">@color/blue_light</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" >?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
-        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="android:colorBackground">@color/green_light</item>
         <item name="android:editTextColor">@color/white</item>
     </style>
 
-    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    <style name="Widget.MaterialComponents.BottomNavigationView.Personalized" parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
     </style>
 
-    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
-        <item name="colorOnPrimary">@color/white</item>
-    </style>
-
-    <style name="TextAppearance.AppCompat.Title.DarkPurple" parent="TextAppearance.AppCompat.Title">
-        <item name="android:textColor">@color/purple_700</item>
+    <style name="TextAppearance.AppCompat.Title.LightGreen" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textAlignment">center</item>
     </style>
 

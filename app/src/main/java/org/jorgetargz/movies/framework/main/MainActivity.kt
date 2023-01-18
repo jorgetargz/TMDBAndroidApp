@@ -103,10 +103,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            R.id.navigation_login -> {
-                //TODO: Implement login
-                true
-            }
             else -> super.onOptionsItemSelected(menuItem)
         }
     }

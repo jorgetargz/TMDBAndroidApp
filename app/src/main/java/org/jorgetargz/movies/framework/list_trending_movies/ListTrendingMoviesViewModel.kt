@@ -40,6 +40,7 @@ class ListTrendingMoviesViewModel @Inject constructor(
                                 isLoading = false
                             )
                         }
+                        Timber.e(cause)
                     })
                     .collect { result ->
                         when (result) {
@@ -50,6 +51,7 @@ class ListTrendingMoviesViewModel @Inject constructor(
                                         isLoading = false
                                     )
                                 }
+                                Timber.e(result.message)
                             }
                             is NetworkResult.Loading -> _uiState.update {
                                 it.copy(isLoading = true)
