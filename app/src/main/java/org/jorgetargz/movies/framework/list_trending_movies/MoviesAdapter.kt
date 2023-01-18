@@ -37,8 +37,8 @@ class MoviesAdapter(private val listTrendingMoviesActions: ListTrendingMoviesAct
 
         fun bind(item: Movie) = with(binding) {
             tvTitle.text = item.title
-            item.posterPath?.let { ivMovie.loadUrl(it) }
-                ?: ivMovie.setImageResource(R.drawable.ic_movie)
+            item.posterPath?.let { ivMedia.loadUrl(it) }
+                ?: ivMedia.setImageResource(R.drawable.ic_movie)
 
             card.setOnClickListener {
                 listTrendingMoviesActions.onMovieClicked(item.title)

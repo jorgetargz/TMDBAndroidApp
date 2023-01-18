@@ -37,7 +37,7 @@ class TVShowsAdapter(private val listTrendingTVShowsActions: ListTrendingTVShows
 
         fun bind(item: TVShow) = with(binding) {
             tvTitle.text = item.name
-            item.posterPath?.let { ivMovie.loadUrl(it) } ?: ivMovie.setImageResource(R.drawable.ic_movie)
+            item.posterPath?.let { ivMedia.loadUrl(it) } ?: ivMedia.setImageResource(R.drawable.ic_movie)
 
             card.setOnClickListener {
                 listTrendingTVShowsActions.onTVShowClicked(item.id)
