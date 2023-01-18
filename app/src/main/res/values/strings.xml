@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Movies App</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">TMDB App</string>
     <string name="title_trend_movies">Trending Movies</string>
     <string name="title_trend_tv_shows">Trending TV Shows</string>
-    <string name="github_profile">Mi Github</string>
-    <string name="search">Busacr</string>
-    <string name="login">Iniciar sesion</string>
-    <string name="titulo">Titulo</string>
-    <string name="buscar">Buscar</string>
+    <string name="github_profile">My Github</string>
+    <string name="search">Search</string>
+    <string name="login">Log in</string>
+    <string name="titulo">Title</string>
+    <string name="poster">Poster</string>
+    <string name="title_trend_persons">Trending Persons</string>
+    <string name="known_for">Known for</string>
 </resources>
