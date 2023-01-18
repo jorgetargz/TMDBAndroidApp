@@ -9,7 +9,7 @@ import retrofit2.http.Path
 /**
  * Retrofit API Services for Movies
  */
-interface MovieService {
+interface MoviesService {
 
     @GET("/3/trending/movie/week")
     suspend fun getPopularMovies(): Response<TrendingMovieResponse>
