@@ -13,13 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Movies">
         <activity
-            android:name=".framework.main.MainActivity"
+            android:name=".framework.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".framework.main.MainActivity"
+            android:parentActivityName=".framework.splash.SplashActivity" />
     </application>
 
 </manifest>
