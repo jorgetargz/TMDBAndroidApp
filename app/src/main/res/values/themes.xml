@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blue_dark</item>
         <item name="colorPrimaryVariant">@color/blue_light</item>
-        <item name="colorOnPrimary">@color/blue_light</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -12,14 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
-        <item name="android:colorBackground">@color/green_light</item>
+        <item name="android:colorBackground">@color/blue_light</item>
         <item name="android:editTextColor">@color/white</item>
     </style>
 
     <style name="Widget.MaterialComponents.BottomNavigationView.Personalized" parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
     </style>
 
-    <style name="TextAppearance.AppCompat.Title.LightGreen" parent="TextAppearance.AppCompat.Title">
+    <style name="TextAppearance.AppCompat.Title.PrimaryColor" parent="TextAppearance.AppCompat.Title">
         <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textAlignment">center</item>
     </style>

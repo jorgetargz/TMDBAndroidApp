@@ -46,8 +46,8 @@ fun ImageView.loadUrlFromTMDB(url: String) {
     }
 }
 
-fun ImageView.loadUrlFromTMDBW500Size(url: String) {
-    val completeUrl = Config.IMAGE_URL + Constantes.W500_SIZE + url
+fun ImageView.loadUrlFromTMDBW342Size(url: String) {
+    val completeUrl = Config.IMAGE_URL + Constantes.W342_SIZE + url
     this.load(completeUrl) {
         scale(Scale.FIT)
         crossfade(true)

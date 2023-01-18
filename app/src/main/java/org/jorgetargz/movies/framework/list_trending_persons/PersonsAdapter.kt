@@ -13,7 +13,7 @@ import org.jorgetargz.movies.databinding.ItemPersonBinding
 import org.jorgetargz.movies.domain.models.Person
 import org.jorgetargz.movies.framework.utils.inflate
 import org.jorgetargz.movies.framework.utils.loadUrlFromTMDB
-import org.jorgetargz.movies.framework.utils.loadUrlFromTMDBW500Size
+import org.jorgetargz.movies.framework.utils.loadUrlFromTMDBW342Size
 
 class PersonsAdapter(
     private val listTrendingPersonsActions: ListTrendingPersonsActions,
@@ -60,7 +60,7 @@ class PersonsAdapter(
                 it.poster_path?.let { it1 ->
                     run {
                         val imageView = ImageView(context)
-                        imageView.loadUrlFromTMDBW500Size(it1)
+                        imageView.loadUrlFromTMDBW342Size(it1)
                         knowForContainer.addView(imageView)
                     }
                 }

@@ -30,7 +30,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="@string/titulo"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title.LightGreen"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title.PrimaryColor"
                 app:layout_constraintBottom_toTopOf="@id/ivMedia"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
