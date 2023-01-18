@@ -18,7 +18,7 @@ data class MovieEntity(
     val vote_count: Int = 0,
 )
 
-fun MovieEntity.toMovie(): Movie = Movie(
+fun MovieEntity.toDomain(): Movie = Movie(
     id = id,
     title = title,
     overview = overview,
@@ -29,7 +29,7 @@ fun MovieEntity.toMovie(): Movie = Movie(
     voteCount = vote_count,
 )
 
-fun Movie.toMovieEntity(): MovieEntity = MovieEntity(
+fun Movie.toDataEntity(): MovieEntity = MovieEntity(
     id = id,
     title = title,
     overview = overview,

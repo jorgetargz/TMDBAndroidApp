@@ -18,7 +18,7 @@ data class TVShowEntity(
     val vote_count: Int = 0,
 )
 
-fun TVShowEntity.toTVShow(): TVShow = TVShow(
+fun TVShowEntity.toDomain(): TVShow = TVShow(
     id = id,
     name = name,
     overview = overview,
@@ -29,7 +29,7 @@ fun TVShowEntity.toTVShow(): TVShow = TVShow(
     voteCount = vote_count,
 )
 
-fun TVShow.toTVShowEntity(): TVShowEntity = TVShowEntity(
+fun TVShow.toDataEntity(): TVShowEntity = TVShowEntity(
     id = id,
     name = name,
     overview = overview,
