@@ -11,7 +11,6 @@ import org.jorgetargz.movies.data.models.entitys.TVShowEntity
     entities = [MovieEntity::class, TVShowEntity::class, PersonEntity::class, KnownForEntity::class],
     version = 3
 )
-
 abstract class AppDatabase : RoomDatabase() {
     abstract fun moviesDao(): MoviesDao
     abstract fun tvShowsDao(): TVShowsDao
