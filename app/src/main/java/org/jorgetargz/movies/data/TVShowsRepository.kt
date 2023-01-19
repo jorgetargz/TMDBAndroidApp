@@ -58,4 +58,15 @@ class TVShowsRepository @Inject constructor(
             emit(tvShowsRemoteDataSource.fetchTVShow(id).map { it?.toDomain() ?: TVShow() })
         }.flowOn(Dispatchers.IO)
     }
+
+    fun fetchTVShowCached(id: Int): Flow<NetworkResult<TVShow>> {
+        return flow {
+            emit(tvShowCachedById(id))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    private fun tvShowCachedById(id: Int): NetworkResult<TVShow> =
+        tvShowsDao.getById(id).let { tvShow ->
+            NetworkResult.Success(tvShow.toDomain())
+        }
 }

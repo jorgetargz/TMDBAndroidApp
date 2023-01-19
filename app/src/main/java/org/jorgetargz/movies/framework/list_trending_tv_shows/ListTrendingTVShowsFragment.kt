@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -28,7 +29,8 @@ class ListTrendingTVShowsFragment : Fragment(), MenuProvider {
 
     inner class ListTrendingTVShowsActionsImpl : ListTrendingTVShowsActions {
         override fun onTVShowClicked(id: Int) {
-            //TODO: Implement this
+            val action = ListTrendingTVShowsFragmentDirections.actionTrendingTvShowsFragmentToDetailsTvShowFragment(id)
+            findNavController().navigate(action)
         }
     }
 

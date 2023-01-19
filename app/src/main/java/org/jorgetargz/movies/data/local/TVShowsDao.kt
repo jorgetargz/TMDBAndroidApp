@@ -9,6 +9,9 @@ interface TVShowsDao {
     @Query("SELECT * FROM shows order by popularity DESC")
     fun getAll(): List<TVShowEntity>
 
+    @Query("SELECT * FROM shows WHERE id = :id")
+    fun getById(id: Int): TVShowEntity
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(movies: List<TVShowEntity>)
 

@@ -29,7 +29,21 @@
         android:id="@+id/trending_tv_shows_fragment"
         android:name="org.jorgetargz.movies.framework.list_trending_tv_shows.ListTrendingTVShowsFragment"
         android:label="@string/title_trend_tv_shows"
-        tools:layout="@layout/fragment_trending_tv_shows" />
+        tools:layout="@layout/fragment_trending_tv_shows" >
+        <action
+            android:id="@+id/action_trending_tv_shows_fragment_to_details_tv_show_fragment"
+            app:destination="@id/details_tv_show_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_tv_show_fragment"
+        android:name="org.jorgetargz.movies.framework.details_tv_show.DetailsTVShowFragment"
+        android:label="@string/title_details_tv_show"
+        tools:layout="@layout/fragment_details_tv_show" >
+        <argument
+            android:name="idTVShow"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/trending_persons_fragment"
