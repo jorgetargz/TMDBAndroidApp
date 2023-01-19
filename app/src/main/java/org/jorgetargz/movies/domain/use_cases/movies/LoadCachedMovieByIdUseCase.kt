@@ -6,7 +6,7 @@ import org.jorgetargz.movies.domain.models.Movie
 import org.jorgetargz.movies.utils.NetworkResult
 import javax.inject.Inject
 
-class LoadMovieCachedByIdUseCase @Inject constructor(
+class LoadCachedMovieByIdUseCase @Inject constructor(
     private val repository: MoviesRepository
 ) {
     operator fun invoke(id: Int): Flow<NetworkResult<Movie>> {

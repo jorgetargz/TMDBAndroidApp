@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.jorgetargz.movies.domain.models.Movie
+import org.jorgetargz.movies.domain.use_cases.movies.LoadCachedMovieByIdUseCase
 import org.jorgetargz.movies.domain.use_cases.movies.LoadMovieByIdUseCase
-import org.jorgetargz.movies.domain.use_cases.movies.LoadMovieCachedByIdUseCase
 import org.jorgetargz.movies.framework.utils.Utils
 import org.jorgetargz.movies.utils.NetworkResult
 import timber.log.Timber
@@ -22,7 +22,7 @@ import javax.inject.Inject
 class DetailsMovieViewModel @Inject constructor(
     @ApplicationContext private val appContext: Context,
     private val loadMovieByIdUseCase: LoadMovieByIdUseCase,
-    private val loadMovieCachedByIdUseCase: LoadMovieCachedByIdUseCase,
+    private val loadCachedMovieByIdUseCase: LoadCachedMovieByIdUseCase,
 ) : ViewModel() {
 
     private val _uiState: MutableStateFlow<DetailsMovieContract.DetailsMovieState> by lazy {
@@ -66,7 +66,7 @@ class DetailsMovieViewModel @Inject constructor(
                         }
                     }
             } else {
-                loadMovieCachedByIdUseCase.invoke(id)
+                loadCachedMovieByIdUseCase.invoke(id)
                     .catch(action = { cause ->
                         _uiState.update {
                             it.copy(
