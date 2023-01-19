@@ -26,4 +26,12 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="TextAppearance.AppCompat.Small.Value" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+
 </resources>
