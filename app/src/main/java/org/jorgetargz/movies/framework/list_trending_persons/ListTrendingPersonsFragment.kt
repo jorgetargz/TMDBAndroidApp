@@ -32,6 +32,16 @@ class ListTrendingPersonsFragment : Fragment(), MenuProvider {
             val action = ListTrendingPersonsFragmentDirections.actionTrendingPersonsFragmentToDetailsPersonFragment(id)
             findNavController().navigate(action)
         }
+
+        override fun onTVShowClicked(id: Int) {
+            val action = ListTrendingPersonsFragmentDirections.actionTrendingPersonsFragmentToDetailsTvShowFragment(id)
+            findNavController().navigate(action)
+        }
+
+        override fun onMovieClicked(id: Int) {
+            val action = ListTrendingPersonsFragmentDirections.actionTrendingPersonsFragmentToDetailsMovieFragment(id)
+            findNavController().navigate(action)
+        }
     }
 
     override fun onCreateView(

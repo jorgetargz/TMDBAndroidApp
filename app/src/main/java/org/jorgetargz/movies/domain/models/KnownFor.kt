@@ -11,5 +11,6 @@ data class KnownFor(
     val voteCount: Int = 0,
     val releaseDate: LocalDate?,
     val firstAirDate: LocalDate?,
+    val mediaType : String? = null,
     val overview: String = "",
 )

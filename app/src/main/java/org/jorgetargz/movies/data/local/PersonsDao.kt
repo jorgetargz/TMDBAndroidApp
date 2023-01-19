@@ -13,7 +13,7 @@ interface PersonsDao {
     fun getAll(): List<PersonWithKnownFor>
 
     @Query("Select * from persons where id = :id")
-    fun getPersonById(id: Int): PersonEntity
+    fun getPersonById(id: Int): PersonEntity?
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(person: PersonEntity)

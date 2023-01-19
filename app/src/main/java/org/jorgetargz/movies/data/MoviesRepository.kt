@@ -57,7 +57,17 @@ class MoviesRepository @Inject constructor(
         return flow {
             emit(movieCachedById(id))
             emit(NetworkResult.Loading())
-            emit(moviesRemoteDataSource.fetchMovie(id).map { it?.toDomain() ?: Movie() })
+
+            val result = moviesRemoteDataSource.fetchMovie(id)
+                .map { response -> response?.toDomain() ?: Movie() }
+
+            //Cache to database if response is successful
+            if (result is NetworkResult.Success) {
+                result.data?.let { it ->
+                    moviesDao.update(it.toDataEntity())
+                }
+            }
+            emit(result)
         }.flowOn(Dispatchers.IO)
     }
 
@@ -67,7 +77,7 @@ class MoviesRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
 
     private fun movieCachedById(id: Int): NetworkResult<Movie> =
-        moviesDao.getById(id).let { movie ->
+        moviesDao.getById(id)?.let { movie ->
             NetworkResult.Success(movie.toDomain())
-        }
+        } ?: NetworkResult.Success(Movie())
 }

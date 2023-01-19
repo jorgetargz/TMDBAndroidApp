@@ -69,6 +69,7 @@ class PersonsRepository @Inject constructor(
 
     fun fetchPerson(id: Int): Flow<NetworkResult<Person>> {
         return flow {
+            emit(personCached(id))
             emit(NetworkResult.Loading())
 
             val result = personsRemoteDataSource.fetchPerson(id)
@@ -89,7 +90,7 @@ class PersonsRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
 
     private fun personCached(id: Int): NetworkResult<Person> =
-        personsDao.getPersonById(id).let { person ->
+        personsDao.getPersonById(id)?.let { person ->
             NetworkResult.Success(person.toDomain())
-        }
+        } ?: NetworkResult.Success(Person())
 }

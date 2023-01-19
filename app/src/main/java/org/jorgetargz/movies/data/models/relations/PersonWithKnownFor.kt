@@ -59,6 +59,7 @@ fun Person.toDataRelation() : PersonWithKnownFor {
             vote_count = it.voteCount,
             release_date = it.releaseDate?.toString(),
             first_air_date = it.firstAirDate?.toString(),
+            media_type = it.mediaType,
             overview = it.overview,
         ) }
     )

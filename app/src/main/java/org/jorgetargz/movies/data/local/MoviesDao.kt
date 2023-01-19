@@ -10,10 +10,16 @@ interface MoviesDao {
     fun getAll(): List<MovieEntity>
 
     @Query("SELECT * FROM movies WHERE id = :id")
-    fun getById(id: Int): MovieEntity
+    fun getById(id: Int): MovieEntity?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun update(toDataEntity: MovieEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(movies: List<MovieEntity>)
+
+    @Query("Delete from movies where id = :id")
+    fun deleteById(id: Int)
 
     @Query("DELETE FROM movies")
     fun deleteAll()

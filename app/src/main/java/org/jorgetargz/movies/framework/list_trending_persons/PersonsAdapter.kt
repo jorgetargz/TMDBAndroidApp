@@ -56,17 +56,27 @@ class PersonsAdapter(
                 knowForContainer.removeViewAt(0)
             }
 
-            item.knownFor.forEach {
-                it.posterPath?.let { it1 ->
-                    run {
-                        val imageView = ImageView(context)
-                        imageView.loadUrlFromTMDBW342Size(it1)
-                        knowForContainer.addView(imageView)
+            item.knownFor.forEach { knownFor ->
+                knownFor.posterPath?.let { poster ->
+                    val imageView = ImageView(context)
+                    imageView.loadUrlFromTMDBW342Size(poster)
+                    val id = knownFor.id
+                    val type = knownFor.mediaType
+                    if (type == "movie") {
+                        imageView.setOnClickListener {
+                            listTrendingPersonsActions.onMovieClicked(id)
+                        }
+                    } else if (type == "tv") {
+                        imageView.setOnClickListener {
+                            listTrendingPersonsActions.onTVShowClicked(id)
+                        }
                     }
+                    knowForContainer.addView(imageView)
                 }
             }
         }
     }
+
 
     class DiffCallback : DiffUtil.ItemCallback<Person>() {
         override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {

@@ -12,6 +12,7 @@ class KnownForResponse(
     val vote_count: Int = 0,
     val release_date: String?,
     val first_air_date: String?,
+    val media_type: String? = null,
     val overview: String = "",
 )
 
@@ -25,6 +26,7 @@ fun KnownForResponse.toDomain(): KnownFor {
         voteCount = vote_count,
         releaseDate = release_date?.let { LocalDate.parse(it) },
         firstAirDate = first_air_date?.let { LocalDate.parse(it) },
+        mediaType = media_type,
         overview = overview,
     )
 }

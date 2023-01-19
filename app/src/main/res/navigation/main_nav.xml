@@ -53,6 +53,12 @@
         <action
             android:id="@+id/action_trending_persons_fragment_to_details_person_fragment"
             app:destination="@id/details_person_fragment" />
+        <action
+            android:id="@+id/action_trending_persons_fragment_to_details_tv_show_fragment"
+            app:destination="@id/details_tv_show_fragment" />
+        <action
+            android:id="@+id/action_trending_persons_fragment_to_details_movie_fragment"
+            app:destination="@id/details_movie_fragment" />
     </fragment>
 
     <fragment
