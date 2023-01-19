@@ -13,4 +13,14 @@
     <string name="value_title">Title</string>
     <string name="key_overview">Overview:</string>
     <string name="value_overview">Overview</string>
+    <string name="key_release_date">ReleaseDate:</string>
+    <string name="value_release_date">Release Date</string>
+    <string name="value_vote_average">Vote Average</string>
+    <string name="key_vote_average">Vote Average:</string>
+    <string name="key_vote_count">Vote Count:</string>
+    <string name="value_vote_count">Vote Count</string>
+    <string name="title_details_movie">Pelicula</string>
+    <string name="value_name">Name</string>
+    <string name="value_first_air">First Air</string>
+    <string name="key_first_air">First Air:</string>
 </resources>

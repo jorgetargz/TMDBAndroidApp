@@ -55,8 +55,19 @@ class MoviesRepository @Inject constructor(
 
     fun fetchMovie(id: Int): Flow<NetworkResult<Movie>> {
         return flow {
+            emit(movieCachedById(id))
             emit(NetworkResult.Loading())
             emit(moviesRemoteDataSource.fetchMovie(id).map { it?.toDomain() ?: Movie() })
         }.flowOn(Dispatchers.IO)
     }
+
+    fun fetchMovieCached(id: Int): Flow<NetworkResult<Movie>> =
+        flow {
+            emit(movieCachedById(id))
+        }.flowOn(Dispatchers.IO)
+
+    private fun movieCachedById(id: Int): NetworkResult<Movie> =
+        moviesDao.getById(id).let { movie ->
+            NetworkResult.Success(movie.toDomain())
+        }
 }

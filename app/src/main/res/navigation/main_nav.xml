@@ -9,7 +9,21 @@
         android:id="@+id/trending_movies_fragment"
         android:name="org.jorgetargz.movies.framework.list_trending_movies.ListTrendingMoviesFragment"
         android:label="@string/title_trend_movies"
-        tools:layout="@layout/fragment_trending_movies" />
+        tools:layout="@layout/fragment_trending_movies" >
+        <action
+            android:id="@+id/action_trending_movies_fragment_to_details_movie_fragment"
+            app:destination="@id/details_movie_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_movie_fragment"
+        android:name="org.jorgetargz.movies.framework.details_movie.DetailsMovieFragment"
+        android:label="@string/title_details_movie"
+        tools:layout="@layout/fragment_details_movie" >
+        <argument
+            android:name="idMovie"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/trending_tv_shows_fragment"

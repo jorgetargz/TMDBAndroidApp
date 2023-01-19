@@ -9,6 +9,9 @@ interface MoviesDao {
     @Query("SELECT * FROM movies order by popularity DESC")
     fun getAll(): List<MovieEntity>
 
+    @Query("SELECT * FROM movies WHERE id = :id")
+    fun getById(id: Int): MovieEntity
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(movies: List<MovieEntity>)
 

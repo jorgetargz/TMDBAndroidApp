@@ -41,7 +41,7 @@ class MoviesAdapter(private val listTrendingMoviesActions: ListTrendingMoviesAct
                 ?: ivMedia.setImageResource(R.drawable.ic_movie)
 
             card.setOnClickListener {
-                listTrendingMoviesActions.onMovieClicked(item.title)
+                listTrendingMoviesActions.onMovieClicked(item.id)
             }
         }
     }

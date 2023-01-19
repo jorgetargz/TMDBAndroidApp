@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".framework.list_trending_tv_shows.ListTrendingTVShowsFragment">
 
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,80 +16,166 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/blue_dark">
+            android:fillViewport="true">
 
-            <ImageView
-                android:id="@+id/ivPoster"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/poster"
-                android:foregroundGravity="center"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:background="@color/blue_dark">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvKeyTitle"
-                style="@style/TextAppearance.AppCompat.Medium.Key"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/key_title"
-                app:layout_constraintBottom_toTopOf="@id/tvKeyOverview"
-                app:layout_constraintEnd_toStartOf="@id/tvValueTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvValueTitle"
-                style="@style/TextAppearance.AppCompat.Medium.Value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/value_title"
-                app:layout_constraintBottom_toTopOf="@id/tvValueOverview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvKeyTitle"
-                app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvValueTitle"
+                    style="@style/TextAppearance.AppCompat.Medium.Key"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/value_title"
+                    app:layout_constraintBottom_toTopOf="@id/ivPoster"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvKeyOverview"
-                style="@style/TextAppearance.AppCompat.Medium.Key"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/key_overview"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tvValueOverview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvKeyTitle" />
+                <ImageView
+                    android:id="@+id/ivPoster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/poster"
+                    android:foregroundGravity="center"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvValueTitle" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvValueOverview"
-                style="@style/TextAppearance.AppCompat.Medium.Value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/value_overview"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvKeyOverview"
-                app:layout_constraintTop_toBottomOf="@id/tvValueTitle" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="291dp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvValueOverview"
+                    style="@style/TextAppearance.AppCompat.Small.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/value_overview"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvKeyReleaseDate"
+                    style="@style/TextAppearance.AppCompat.Medium.Key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/key_release_date"
+                    app:layout_constraintBottom_toTopOf="@id/tvKeyVoteAverage"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvValueReleaseDate"
+                    style="@style/TextAppearance.AppCompat.Medium.Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/value_release_date"
+                    app:layout_constraintBottom_toTopOf="@id/tvValueVoteAverage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvKeyVoteAverage"
+                    style="@style/TextAppearance.AppCompat.Medium.Key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/key_vote_average"
+                    app:layout_constraintBottom_toTopOf="@id/tvKeyVoteCount"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvKeyReleaseDate" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvValueVoteAverage"
+                    style="@style/TextAppearance.AppCompat.Medium.Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/value_vote_average"
+                    app:layout_constraintBottom_toTopOf="@id/tvValueVoteCount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@id/tvValueReleaseDate" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvKeyVoteCount"
+                    style="@style/TextAppearance.AppCompat.Medium.Key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/key_vote_count"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvKeyVoteAverage" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvValueVoteCount"
+                    style="@style/TextAppearance.AppCompat.Medium.Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/value_vote_count"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@id/tvValueVoteAverage" />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="421dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="265dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="624dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="32dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

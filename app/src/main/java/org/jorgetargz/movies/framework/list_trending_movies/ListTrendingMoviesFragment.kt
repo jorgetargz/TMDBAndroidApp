@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -27,8 +28,9 @@ class ListTrendingMoviesFragment : Fragment(), MenuProvider {
     private lateinit var adapter: MoviesAdapter
 
     inner class ListTrendingMoviesActionsImpl : ListTrendingMoviesActions {
-        override fun onMovieClicked(nombre: String) {
-            //TODO: Implement this
+        override fun onMovieClicked(id: Int) {
+            val action = ListTrendingMoviesFragmentDirections.actionTrendingMoviesFragmentToDetailsMovieFragment(id)
+            findNavController().navigate(action)
         }
     }
 
