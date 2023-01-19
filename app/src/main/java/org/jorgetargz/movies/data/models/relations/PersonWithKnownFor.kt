@@ -29,6 +29,17 @@ fun PersonWithKnownFor.toDomain() : Person {
     )
 }
 
+fun Person.toDataEntity() : PersonEntity {
+    return PersonEntity(
+        id = id,
+        name = name,
+        profile_path = profilePath,
+        biography = biography,
+        popularity = popularity,
+        known_for_department = knownForDepartment,
+    )
+}
+
 fun Person.toDataRelation() : PersonWithKnownFor {
     return PersonWithKnownFor(
         person = PersonEntity(

@@ -6,7 +6,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import org.jorgetargz.movies.data.local.PersonsDao
+import org.jorgetargz.movies.data.models.entitys.PersonEntity
 import org.jorgetargz.movies.data.models.entitys.toDomain
+import org.jorgetargz.movies.data.models.relations.toDataEntity
 import org.jorgetargz.movies.data.models.relations.toDataRelation
 import org.jorgetargz.movies.data.models.relations.toDomain
 import org.jorgetargz.movies.data.models.responses.toDomain
@@ -68,7 +70,26 @@ class PersonsRepository @Inject constructor(
     fun fetchPerson(id: Int): Flow<NetworkResult<Person>> {
         return flow {
             emit(NetworkResult.Loading())
-            emit(personsRemoteDataSource.fetchPerson(id).map { it?.toDomain() ?: Person() })
+
+            val result = personsRemoteDataSource.fetchPerson(id)
+                .map { response -> response?.toDomain() ?: Person() }
+
+            //Save to database if response is successful
+            if (result is NetworkResult.Success) {
+                personsDao.update(result.data?.toDataEntity() ?: PersonEntity())
+            }
+
+            emit(result)
         }.flowOn(Dispatchers.IO)
     }
+
+    fun fetchPersonCached(id: Int): Flow<NetworkResult<Person>> =
+        flow {
+            emit(personCached(id))
+        }.flowOn(Dispatchers.IO)
+
+    private fun personCached(id: Int): NetworkResult<Person> =
+        personsDao.getPersonById(id).let { person ->
+            NetworkResult.Success(person.toDomain())
+        }
 }

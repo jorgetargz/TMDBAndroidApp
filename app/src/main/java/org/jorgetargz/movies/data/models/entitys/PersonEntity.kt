@@ -11,6 +11,7 @@ data class PersonEntity(
     val id: Int = 0,
     val name: String = "",
     val profile_path: String? = null,
+    val biography: String? = null,
     val popularity: Double = 0.0,
     val known_for_department: String = "",
 )
@@ -19,6 +20,7 @@ fun PersonEntity.toDomain(): Person = Person(
     id = id,
     name = name,
     profilePath = profile_path,
+    biography = biography,
     popularity = popularity,
     knownForDepartment = known_for_department,
 )

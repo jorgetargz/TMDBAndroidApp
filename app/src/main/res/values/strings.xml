@@ -24,4 +24,8 @@
     <string name="value_first_air">First Air</string>
     <string name="key_first_air">First Air:</string>
     <string name="title_details_tv_show">TV Show</string>
+    <string name="value_biography">Biography</string>
+    <string name="value_job">Job</string>
+    <string name="key_job">Job:</string>
+    <string name="title_details_person">Person</string>
 </resources>

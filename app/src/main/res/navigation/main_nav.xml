@@ -49,5 +49,19 @@
         android:id="@+id/trending_persons_fragment"
         android:name="org.jorgetargz.movies.framework.list_trending_persons.ListTrendingPersonsFragment"
         android:label="@string/title_trend_persons"
-        tools:layout="@layout/fragment_trending_persons" />
+        tools:layout="@layout/fragment_trending_persons" >
+        <action
+            android:id="@+id/action_trending_persons_fragment_to_details_person_fragment"
+            app:destination="@id/details_person_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_person_fragment"
+        android:name="org.jorgetargz.movies.framework.details_person.DetailsPersonFragment"
+        android:label="@string/title_details_person"
+        tools:layout="@layout/fragment_details_person" >
+        <argument
+            android:name="idPerson"
+            app:argType="integer" />
+    </fragment>
 </navigation>

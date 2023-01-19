@@ -12,6 +12,12 @@ interface PersonsDao {
     @Query("SELECT * FROM persons order by popularity DESC")
     fun getAll(): List<PersonWithKnownFor>
 
+    @Query("Select * from persons where id = :id")
+    fun getPersonById(id: Int): PersonEntity
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun update(person: PersonEntity)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(persons: List<PersonEntity>, knowFor: List<KnownForEntity>)
 

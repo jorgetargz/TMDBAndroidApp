@@ -6,6 +6,7 @@ data class PersonResponse(
     val id: Int = 0,
     val name: String = "",
     val profile_path: String? = null,
+    val biography: String? = null,
     val popularity: Double = 0.0,
     val known_for_department: String = "",
     val known_for: List<KnownForResponse> = emptyList(),
@@ -16,6 +17,7 @@ fun PersonResponse.toDomain(): Person {
         id = id,
         name = name,
         profilePath = profile_path,
+        biography = biography,
         popularity = popularity,
         knownForDepartment = known_for_department,
         knownFor = known_for.map { it.toDomain() }
