@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.snackbar.Snackbar
@@ -65,23 +66,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.navigation_trending_movies -> {
-                    navController.navigate(R.id.trending_movies_fragment)
-                    true
-                }
-                R.id.navigation_trending_tv_shows -> {
-                    navController.navigate(R.id.trending_tv_shows_fragment)
-                    true
-                }
-                R.id.navigation_trending_persons -> {
-                    navController.navigate(R.id.trending_persons_fragment)
-                    true
-                }
-                else -> super.onOptionsItemSelected(it)
-            }
-        }
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
     }
 
 

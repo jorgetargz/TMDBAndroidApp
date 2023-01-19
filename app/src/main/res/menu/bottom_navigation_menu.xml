@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_trending_movies"
+        android:id="@+id/trending_movies_fragment"
         android:icon="@drawable/ic_movie"
         android:title="@string/title_trend_movies" />
 
     <item
-        android:id="@+id/navigation_trending_tv_shows"
+        android:id="@+id/trending_tv_shows_fragment"
         android:icon="@drawable/ic_live_tv"
         android:title="@string/title_trend_tv_shows" />
 
     <item
-        android:id="@+id/navigation_trending_persons"
+        android:id="@+id/trending_persons_fragment"
         android:icon="@drawable/ic_star_solid"
         android:title="@string/title_trend_persons" />
 
